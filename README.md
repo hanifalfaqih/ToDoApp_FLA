@@ -37,3 +37,25 @@ Presentation Layer
 Business Logic Layer
 ↓
 Data Access Layer
+```
+
+Here is detail flow architecture:
+
+```text
+DTO
+↓
+Mapper (Adapter)
+↓
+Domain Model
+↓
+Repository
+↓
+Use Case
+↓
+ViewModel
+↓
+UI State
+↓
+XML/UI
+```
+
