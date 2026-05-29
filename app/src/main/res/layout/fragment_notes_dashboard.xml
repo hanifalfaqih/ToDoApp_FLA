@@ -17,6 +17,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Search and Profile Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,13 +32,32 @@
                     android:background="@drawable/search_bg"
                     android:drawableStart="@android:drawable/ic_menu_search"
                     android:drawablePadding="8dp"
-                    android:hint="@string/search_notes"
+                    android:hint="Search for notes"
                     android:paddingHorizontal="16dp"
                     android:textSize="14sp"
                     android:inputType="text"
                     android:autofillHints="none" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_profile_dashboard"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/bg_gray"
+                    app:strokeWidth="1dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_person_24"
+                        android:padding="8dp"
+                        app:tint="@color/text_gray"
+                        android:contentDescription="Profile" />
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
+            <!-- Date Selector -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_dates"
                 android:layout_width="match_parent"
@@ -47,6 +67,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_date_card" />
 
+            <!-- Priority Chips -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,41 +75,46 @@
                 android:scrollbars="none">
 
                 <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chip_group_categories"
+                    android:id="@+id/chip_group_priorities"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:singleSelection="true">
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:id="@+id/chip_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/category_all"
+                        android:text="@string/priority_all"
                         android:checked="true"
                         app:chipBackgroundColor="@color/black"
                         android:textColor="@color/white" />
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:id="@+id/chip_high"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/category_important" />
+                        android:text="@string/priority_high" />
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:id="@+id/chip_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/category_lecture" />
+                        android:text="@string/priority_medium" />
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:id="@+id/chip_low"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/category_todo" />
+                        android:text="@string/priority_low" />
 
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
+            <!-- Notes Staggered Grid -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_notes"
                 android:layout_width="match_parent"
@@ -108,9 +134,9 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@android:drawable/ic_input_add"
-        android:contentDescription="Add note"
         app:backgroundTint="@color/black"
         app:tint="@color/white"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.SmallComponent"/>
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+        android:contentDescription="Add note" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

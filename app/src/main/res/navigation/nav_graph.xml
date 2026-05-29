@@ -9,19 +9,20 @@
         android:id="@+id/navigation_notes"
         android:name="id.hanifalfaqih.todoapp.ui.NotesDashboardFragment"
         android:label="Notes"
-        tools:layout="@layout/fragment_notes_dashboard" />
+        tools:layout="@layout/fragment_notes_dashboard">
+        <action
+            android:id="@+id/action_notes_to_detail"
+            app:destination="@id/navigation_note_detail" />
+        <action
+            android:id="@+id/action_notes_to_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_todo"
-        android:name="id.hanifalfaqih.todoapp.ui.TodoDashboardFragment"
-        android:label="To-do"
-        tools:layout="@layout/fragment_todo_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_calendar"
-        android:name="id.hanifalfaqih.todoapp.ui.CalendarFragment"
-        android:label="Calendar"
-        tools:layout="@layout/fragment_calendar" />
+        android:id="@+id/navigation_note_detail"
+        android:name="id.hanifalfaqih.todoapp.ui.NoteDetailFragment"
+        android:label="Note Detail"
+        tools:layout="@layout/fragment_note_detail" />
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -38,4 +39,5 @@
         android:name="id.hanifalfaqih.todoapp.ui.EditProfileFragment"
         android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" />
+
 </navigation>

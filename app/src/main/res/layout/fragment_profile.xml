@@ -24,74 +24,57 @@
                 android:background="@color/primary_blue"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageButton
+                android:id="@+id/btn_back_profile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_revert"
+                app:tint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="Back" />
+
             <TextView
                 android:id="@+id/tv_profile_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:text="@string/profile"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/btn_back_profile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/btn_back_profile" />
 
             <!-- Profile Image Area -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_profile_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_profile_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="8dp"
+                app:strokeColor="@color/white"
+                app:strokeWidth="4dp"
                 app:layout_constraintBottom_toBottomOf="@id/view_header"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view_header">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cv_profile_image"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    app:cardCornerRadius="60dp"
-                    app:cardElevation="8dp"
-                    app:strokeColor="@color/white"
-                    app:strokeWidth="4dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/iv_profile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/white"
-                        android:contentDescription="Profile Image"
-                        android:padding="24dp"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_person_24"
-                        app:tint="@color/primary_blue" />
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btn_edit_photo"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    app:cardBackgroundColor="@color/primary_blue"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="10dp"
-                    app:strokeColor="@color/white"
-                    app:strokeWidth="2dp"
-                    app:layout_constraintBottom_toBottomOf="@id/cv_profile_image"
-                    app:layout_constraintEnd_toEndOf="@id/cv_profile_image">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="8dp"
-                        android:src="@android:drawable/ic_menu_camera"
-                        app:tint="@color/white" />
-                </com.google.android.material.card.MaterialCardView>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/iv_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:contentDescription="Profile Image"
+                    android:padding="24dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_person_24"
+                    app:tint="@color/primary_blue" />
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- User Info -->
             <TextView
@@ -105,7 +88,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cl_profile_image" />
+                app:layout_constraintTop_toBottomOf="@id/cv_profile_image" />
 
             <TextView
                 android:id="@+id/tv_user_email"
