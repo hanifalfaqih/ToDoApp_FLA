@@ -1,8 +1,8 @@
-package id.hanifalfaqih.todoapp.presentation.create
+package id.hanifalfaqih.todoapp.presentation.update
 
 import androidx.lifecycle.viewModelScope
 import id.hanifalfaqih.todoapp.domain.model.Task
-import id.hanifalfaqih.todoapp.domain.usecase.CreateTaskUseCase
+import id.hanifalfaqih.todoapp.domain.usecase.UpdateTaskUseCase
 import id.hanifalfaqih.todoapp.presentation.common.BaseViewModel
 import id.hanifalfaqih.todoapp.presentation.common.Event
 import id.hanifalfaqih.todoapp.presentation.common.UiState
@@ -11,19 +11,20 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class CreateTaskViewModel(
-    private val createTaskUseCase: CreateTaskUseCase
+class UpdateTaskViewModel(
+    private val updateTaskUseCase: UpdateTaskUseCase
 ) : BaseViewModel() {
 
-    private val _createTaskState =
+    private val _updateTaskState =
         MutableStateFlow<UiState<Task>>(
             UiState.Idle
         )
 
-    val createTaskState: StateFlow<UiState<Task>> =
-        _createTaskState.asStateFlow()
+    val updateTaskState: StateFlow<UiState<Task>> =
+        _updateTaskState.asStateFlow()
 
-    fun createTask(
+    fun updateTask(
+        id: Int,
         title: String,
         body: String,
         priority: String
@@ -47,23 +48,24 @@ class CreateTaskViewModel(
 
         viewModelScope.launch {
 
-            _createTaskState.value =
+            _updateTaskState.value =
                 UiState.Loading
 
             try {
 
-                val task = createTaskUseCase(
+                val task = updateTaskUseCase(
+                    id = id,
                     title = title,
                     body = body,
                     priority = priority
                 )
 
-                _createTaskState.value =
+                _updateTaskState.value =
                     UiState.Success(task)
 
                 sendEvent(
                     Event.ShowMessage(
-                        "Task created successfully"
+                        "Task updated successfully"
                     )
                 )
 
@@ -73,14 +75,14 @@ class CreateTaskViewModel(
 
             } catch (e: Exception) {
 
-                _createTaskState.value =
+                _updateTaskState.value =
                     UiState.Error(
-                        e.message ?: "Failed to create task"
+                        e.message ?: "Failed to update task"
                     )
 
                 sendEvent(
                     Event.ShowMessage(
-                        e.message ?: "Failed to create task"
+                        e.message ?: "Failed to update task"
                     )
                 )
             }
