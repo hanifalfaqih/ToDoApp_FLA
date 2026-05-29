@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">ToDoApp</string>
+    <string name="search_notes">Search for notes</string>
+    <string name="category_all">All</string>
+    <string name="category_important">Important</string>
+    <string name="category_lecture">Lecture notes</string>
+    <string name="category_todo">To-do lists</string>
+    <string name="today">Today</string>
+    <string name="calendar">Calendar</string>
+    <string name="save">Save</string>
+    <string name="add_subtask">Add subtask</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+    <string name="change_photo">Change Profile Photo</string>
 </resources>
