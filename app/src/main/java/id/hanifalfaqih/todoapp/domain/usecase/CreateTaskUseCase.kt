@@ -1,6 +1,8 @@
 package id.hanifalfaqih.todoapp.domain.usecase
 
 import id.hanifalfaqih.todoapp.data.repository.TaskRepository
+import id.hanifalfaqih.todoapp.domain.factory.TaskFactory
+import id.hanifalfaqih.todoapp.domain.factory.TaskFactoryProvider
 import id.hanifalfaqih.todoapp.domain.model.Task
 
 class CreateTaskUseCase(
@@ -13,10 +15,18 @@ class CreateTaskUseCase(
         priority: String
     ): Task {
 
-        return taskRepository.createTask(
+        val factory = TaskFactoryProvider.getFactory(priority)
+
+        val localTask = factory.createTask(
+            id = 0,
             title = title,
-            body = body,
-            priority = priority
+            description = body
+        )
+
+        return taskRepository.createTask(
+            title = localTask.title,
+            body = localTask.description,
+            priority = localTask.priority.name
         )
     }
 }
