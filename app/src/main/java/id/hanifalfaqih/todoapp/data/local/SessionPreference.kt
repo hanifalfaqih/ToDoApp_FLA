@@ -20,6 +20,16 @@ class SessionPreference(context: Context) {
         return preferences.getString(KEY_TOKEN, null)
     }
 
+    fun saveName(name: String) {
+        preferences.edit()
+            .putString(KEY_NAME, name)
+            .apply()
+    }
+
+    fun getName(): String? {
+        return preferences.getString(KEY_NAME, "User")
+    }
+
     fun clearSession() {
         preferences.edit()
             .clear()
@@ -29,5 +39,6 @@ class SessionPreference(context: Context) {
     companion object {
         private const val PREF_NAME = "todo_app_pref"
         private const val KEY_TOKEN = "key_token"
+        private const val KEY_NAME = "key_name"
     }
 }

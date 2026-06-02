@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import id.hanifalfaqih.todoapp.R
+import id.hanifalfaqih.todoapp.data.local.SessionPreference
 
 class SplashFragment : Fragment() {
 
@@ -18,8 +19,14 @@ class SplashFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_splash, container, false)
         
+        val sessionPreference = SessionPreference(requireContext())
+        
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.action_splash_to_login)
+            if (sessionPreference.getToken() != null) {
+                findNavController().navigate(R.id.action_splash_to_notes)
+            } else {
+                findNavController().navigate(R.id.action_splash_to_login)
+            }
         }, 2000)
         
         return view

@@ -15,6 +15,11 @@
             app:destination="@id/navigation_login"
             app:popUpTo="@id/navigation_splash"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splash_to_notes"
+            app:destination="@id/navigation_notes"
+            app:popUpTo="@id/navigation_splash"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -53,7 +58,12 @@
         android:id="@+id/navigation_note_detail"
         android:name="id.hanifalfaqih.todoapp.ui.NoteDetailFragment"
         android:label="Note Detail"
-        tools:layout="@layout/fragment_note_detail" />
+        tools:layout="@layout/fragment_note_detail">
+        <argument
+            android:name="taskId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
