@@ -56,8 +56,8 @@ class RegisterFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.event.collect { event ->
                     when (event) {
-                        is Event.NavigateToHome -> {
-                            findNavController().navigate(R.id.action_login_to_notes)
+                        is Event.NavigateToLogin -> {
+                            findNavController().popBackStack()
                         }
                         is Event.ShowMessage -> {
                             Toast.makeText(context, event.message, Toast.LENGTH_SHORT).show()

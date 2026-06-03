@@ -47,6 +47,7 @@ class AuthRepositoryImpl(
                 ?: throw Exception("Token not found")
 
             sessionPreference.saveToken(token)
+            sessionPreference.saveName(username) // Save username as name since API doesn't return it
 
             return token
         }
