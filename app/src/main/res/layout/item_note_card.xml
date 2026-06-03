@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:id="@+id/ll_note_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/note_blue">
+
+        <TextView
+            android:id="@+id/tv_note_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tag_bg"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:text="HIGH"
+            android:textColor="@color/text_black"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tv_note_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product Meeting"
+            android:textColor="@color/text_black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_note_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="1. Review of Previous Action Items\n2. Product Development Update"
+            android:textColor="@color/text_black"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

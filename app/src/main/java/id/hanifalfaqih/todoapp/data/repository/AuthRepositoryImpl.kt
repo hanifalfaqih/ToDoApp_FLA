@@ -23,7 +23,7 @@ class AuthRepositoryImpl(
         val response = authApi.register(request)
 
         if (response.isSuccessful) {
-
+            sessionPreference.saveName(name)
             return response.body()?.response
                 ?: throw Exception("Empty response")
         }
@@ -47,6 +47,7 @@ class AuthRepositoryImpl(
                 ?: throw Exception("Token not found")
 
             sessionPreference.saveToken(token)
+            sessionPreference.saveName(username) // Save username as name since API doesn't return it
 
             return token
         }

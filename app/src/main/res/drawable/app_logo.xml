@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    <!-- Rounded Background Container mimicking the image -->
+    <path
+        android:fillColor="#F8F9FA"
+        android:pathData="M60,20h80c22,0 40,9 40,40v80c0,22 -18,40 -40,40h-80c-22,0 -40,-18 -40,-40v-80c0,-31 18,-40 40,-40z" />
+
+    <!-- Bottom blue card -->
+    <path
+        android:fillColor="#2C3EE2"
+        android:pathData="M60,115h80c5,0 10,4.5 10,10v25c0,5.5 -4.5,10 -10,10h-80c-5.5,0 -10,-4.5 -10,-10v-25c0,-5.5 4.5,-10 10,-10z" />
+    <path android:fillColor="#1B28A8" android:pathData="M70,128h50v4h-50zM70,138h60v4h-60z"/>
+
+    <!-- Middle light blue card -->
+    <path
+        android:fillColor="#2496F2"
+        android:pathData="M55,80h90c5,0 10,4.5 10,10v25c0,5.5 -4.5,10 -10,10h-90c-5.5,0 -10,-4.5 -10,-10v-25c0,-5.5 4.5,-10 10,-10z" />
+    <path android:fillColor="#156DBA" android:pathData="M65,93h55v4h-55zM65,103h65v4h-65z"/>
+
+    <!-- Top cyan card -->
+    <path
+        android:fillColor="#4CDCF1"
+        android:pathData="M50,45h100c5,0 10,4.5 10,10v25c0,5.5 -4.5,10 -10,10h-100c-5.5,0 -10,-4.5 -10,-10v-25c0,-5.5 4.5,-10 10,-10z" />
+    <path android:fillColor="#2DAABF" android:pathData="M60,58h60v4h-60zM60,68h70v4h-70zM60,78h35v4h-35z"/>
+</vector>
