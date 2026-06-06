@@ -86,28 +86,8 @@ class ViewModelFactory(
                     createTaskUseCase
                 ) as T
             }
-
-            modelClass.isAssignableFrom(
-                UpdateTaskViewModel::class.java
-            ) -> {
-
-                UpdateTaskViewModel(
-                    updateTaskUseCase
-                ) as T
-            }
-
-            modelClass.isAssignableFrom(
-                ProfileViewModel::class.java
-            ) -> {
-                ProfileViewModel(
-                    sessionPreference
-                ) as T
-            }
-
-            else -> {
-                throw IllegalArgumentException(
-                    "Unknown ViewModel Class"
-                )
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(authRepository, sessionPreference) as T
             }
         }
     }

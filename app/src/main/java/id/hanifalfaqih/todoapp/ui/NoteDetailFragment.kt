@@ -57,6 +57,10 @@ class NoteDetailFragment : Fragment() {
         cgPriority = view.findViewById(R.id.cg_priority)
 
         view.findViewById<ImageButton>(R.id.btn_back).setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        view.findViewById<ImageButton>(R.id.btn_save_note).setOnClickListener {
             handleSave()
         }
         

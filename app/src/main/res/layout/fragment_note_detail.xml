@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Top Bar with only Back Icon -->
+        <!-- Top Bar with Back, Delete and Save Icons -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -22,21 +22,36 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Back"
                 android:src="@android:drawable/ic_menu_revert"
-                app:tint="@color/note_orange"
-                android:contentDescription="Back" />
+                app:tint="@color/note_orange" />
 
-            <ImageButton
-                android:id="@+id/btn_delete"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@android:drawable/ic_menu_delete"
-                app:tint="#FF4D4D"
-                android:contentDescription="Delete"
-                android:visibility="gone"
-                tools:visibility="visible" />
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_delete"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Delete"
+                    android:src="@android:drawable/ic_menu_delete"
+                    android:visibility="gone"
+                    app:tint="#FF4D4D"
+                    tools:visibility="visible" />
+
+                <ImageButton
+                    android:id="@+id/btn_save_note"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Save"
+                    android:src="@drawable/ic_check_ios"
+                    app:tint="@color/primary_blue" />
+            </LinearLayout>
         </RelativeLayout>
 
         <!-- Note Title -->
@@ -45,13 +60,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:autofillHints="none"
             android:background="@null"
             android:hint="Title"
             android:inputType="textMultiLine"
             android:textColor="@color/text_black"
             android:textSize="32sp"
-            android:textStyle="bold"
-            android:autofillHints="none" />
+            android:textStyle="bold" />
 
         <!-- Priority Selection Label -->
         <TextView
@@ -69,31 +84,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:singleSelection="true">
+            app:singleSelection="true"
+            app:selectionRequired="true">
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip_high"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/priority_high"
-                app:chipBackgroundColor="@color/note_pink" />
+                app:chipBackgroundColor="@color/chip_high_bg" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip_medium"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/priority_medium"
-                app:chipBackgroundColor="@color/note_yellow" />
+                app:chipBackgroundColor="@color/chip_medium_bg" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip_low"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/priority_low"
-                app:chipBackgroundColor="@color/note_blue" />
+                app:chipBackgroundColor="@color/chip_low_bg" />
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -104,17 +120,16 @@
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
+            android:autofillHints="none"
             android:background="@null"
             android:gravity="top"
             android:hint="Start typing..."
             android:inputType="textMultiLine"
             android:textColor="@color/text_black"
-            android:textSize="16sp"
-            android:autofillHints="none" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
-    <!-- Bottom Formatting Bar (Floating) -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -172,24 +187,24 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="24dp"
-                android:background="@color/text_gray"
-                android:layout_marginHorizontal="8dp" />
+                android:layout_marginHorizontal="8dp"
+                android:background="@color/text_gray" />
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_weight="1"
+                android:contentDescription="Align Left"
                 android:src="@android:drawable/ic_menu_sort_alphabetically"
-                app:tint="@color/white"
-                android:contentDescription="Align Left" />
+                app:tint="@color/white" />
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_weight="1"
+                android:contentDescription="Align Center"
                 android:src="@android:drawable/ic_menu_sort_by_size"
-                app:tint="@color/white"
-                android:contentDescription="Align Center" />
+                app:tint="@color/white" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
