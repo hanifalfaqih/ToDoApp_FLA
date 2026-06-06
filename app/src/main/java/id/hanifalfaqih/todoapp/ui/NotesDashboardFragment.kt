@@ -19,6 +19,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import id.hanifalfaqih.todoapp.R
+import id.hanifalfaqih.todoapp.di.AppModule
 import id.hanifalfaqih.todoapp.di.ViewModelFactory
 import id.hanifalfaqih.todoapp.presentation.common.UiState
 import id.hanifalfaqih.todoapp.presentation.home.HomeViewModel
@@ -28,7 +29,7 @@ import kotlinx.coroutines.launch
 class NotesDashboardFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels {
-        ViewModelFactory(requireContext())
+        AppModule.provideViewModelFactory(requireContext())
     }
     private lateinit var adapter: NotesAdapter
 

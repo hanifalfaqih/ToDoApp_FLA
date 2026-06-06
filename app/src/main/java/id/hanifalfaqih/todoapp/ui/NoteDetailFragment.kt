@@ -16,6 +16,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.ChipGroup
 import id.hanifalfaqih.todoapp.R
+import id.hanifalfaqih.todoapp.di.AppModule
 import id.hanifalfaqih.todoapp.di.ViewModelFactory
 import id.hanifalfaqih.todoapp.domain.model.TaskPriority
 import id.hanifalfaqih.todoapp.presentation.common.Event
@@ -27,9 +28,15 @@ import kotlinx.coroutines.launch
 
 class NoteDetailFragment : Fragment() {
 
-    private val detailViewModel: TaskDetailViewModel by viewModels { ViewModelFactory(requireContext()) }
-    private val createViewModel: CreateTaskViewModel by viewModels { ViewModelFactory(requireContext()) }
-    private val updateViewModel: UpdateTaskViewModel by viewModels { ViewModelFactory(requireContext()) }
+    private val detailViewModel: TaskDetailViewModel by viewModels {
+        AppModule.provideViewModelFactory(requireContext())
+    }
+    private val createViewModel: CreateTaskViewModel by viewModels {
+        AppModule.provideViewModelFactory(requireContext())
+    }
+    private val updateViewModel: UpdateTaskViewModel by viewModels {
+        AppModule.provideViewModelFactory(requireContext())
+    }
 
     private lateinit var etTitle: EditText
     private lateinit var etContent: EditText

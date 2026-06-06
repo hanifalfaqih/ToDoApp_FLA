@@ -25,6 +25,14 @@ class TaskDetailViewModel(
     val taskDetailState: StateFlow<UiState<Task>> =
         _taskDetailState.asStateFlow()
 
+    private val _deleteTaskState =
+        MutableStateFlow<UiState<String>>(
+            UiState.Idle
+        )
+
+    val deleteTaskState: StateFlow<UiState<String>> =
+        _deleteTaskState.asStateFlow()
+
     fun loadTaskDetail(
         taskId: Int
     ) {
@@ -64,14 +72,19 @@ class TaskDetailViewModel(
 
         viewModelScope.launch {
 
+            _deleteTaskState.value =
+                UiState.Loading
+
             try {
 
-                deleteTaskUseCase(taskId)
+                val message =
+                    deleteTaskUseCase(taskId)
+
+                _deleteTaskState.value =
+                    UiState.Success(message)
 
                 sendEvent(
-                    Event.ShowMessage(
-                        "Task deleted successfully"
-                    )
+                    Event.ShowMessage(message)
                 )
 
                 sendEvent(
@@ -79,6 +92,11 @@ class TaskDetailViewModel(
                 )
 
             } catch (e: Exception) {
+
+                _deleteTaskState.value =
+                    UiState.Error(
+                        e.message ?: "Failed to delete task"
+                    )
 
                 sendEvent(
                     Event.ShowMessage(
