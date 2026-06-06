@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import id.hanifalfaqih.todoapp.R
+import id.hanifalfaqih.todoapp.di.AppModule
 import id.hanifalfaqih.todoapp.di.ViewModelFactory
 import id.hanifalfaqih.todoapp.presentation.common.Event
 import id.hanifalfaqih.todoapp.presentation.common.UiState
@@ -26,7 +27,7 @@ import kotlinx.coroutines.launch
 class NotesDashboardFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels {
-        ViewModelFactory(requireContext())
+        AppModule.provideViewModelFactory(requireContext())
     }
     private lateinit var adapter: NotesAdapter
 

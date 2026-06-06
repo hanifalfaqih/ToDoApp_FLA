@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import id.hanifalfaqih.todoapp.R
+import id.hanifalfaqih.todoapp.di.AppModule
 import id.hanifalfaqih.todoapp.di.ViewModelFactory
 import id.hanifalfaqih.todoapp.presentation.auth.register.RegisterViewModel
 import id.hanifalfaqih.todoapp.presentation.common.Event
@@ -22,7 +23,7 @@ import kotlinx.coroutines.launch
 class RegisterFragment : Fragment() {
 
     private val viewModel: RegisterViewModel by viewModels {
-        ViewModelFactory(requireContext())
+        AppModule.provideViewModelFactory(requireContext())
     }
 
     override fun onCreateView(
