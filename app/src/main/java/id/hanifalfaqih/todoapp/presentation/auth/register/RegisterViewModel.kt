@@ -25,6 +25,7 @@ class RegisterViewModel(
     fun register(
         name: String,
         username: String,
+        email: String,
         password: String
     ) {
 
@@ -38,6 +39,7 @@ class RegisterViewModel(
                 val message = registerUseCase(
                     name = name,
                     username = username,
+                    email = email,
                     password = password
                 )
 

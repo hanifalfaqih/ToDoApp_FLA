@@ -31,15 +31,16 @@ class RegisterFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_register, container, false)
 
-        val etName = view.findViewById<EditText>(R.id.et_name)
+        val etUsername = view.findViewById<EditText>(R.id.et_username)
         val etEmail = view.findViewById<EditText>(R.id.et_email)
         val etPassword = view.findViewById<EditText>(R.id.et_password)
 
         view.findViewById<View>(R.id.btn_register).setOnClickListener {
-            val name = etName.text.toString()
+            val username = etUsername.text.toString()
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
-            viewModel.register(name, email, password)
+            // We pass username as 'name' as well per user request
+            viewModel.register(username, username, email, password)
         }
 
         view.findViewById<TextView>(R.id.tv_login_link).setOnClickListener {

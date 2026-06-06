@@ -18,11 +18,13 @@ class AuthRepositoryImpl(
     override suspend fun register(
         name: String,
         username: String,
+        email: String,
         password: String
     ): String {
         val request = RegisterRequest(
             name = name,
             username = username,
+            email = email,
             password = password
         )
 

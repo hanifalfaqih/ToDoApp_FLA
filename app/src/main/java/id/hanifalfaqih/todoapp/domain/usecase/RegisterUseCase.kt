@@ -8,12 +8,14 @@ class RegisterUseCase(
     suspend operator fun invoke(
         name: String,
         username: String,
+        email: String,
         password: String
     ): String {
 
         return authRepository.register(
             name = name,
             username = username,
+            email = email,
             password = password
         )
     }
