@@ -3,6 +3,7 @@ package id.hanifalfaqih.todoapp.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import id.hanifalfaqih.todoapp.data.local.SessionPreference
+import id.hanifalfaqih.todoapp.data.repository.AuthRepository
 import id.hanifalfaqih.todoapp.domain.usecase.CreateTaskUseCase
 import id.hanifalfaqih.todoapp.domain.usecase.DeleteTaskUseCase
 import id.hanifalfaqih.todoapp.domain.usecase.GetTaskDetailUseCase
@@ -29,7 +30,8 @@ class ViewModelFactory(
     private val createTaskUseCase: CreateTaskUseCase,
     private val updateTaskUseCase: UpdateTaskUseCase,
     private val deleteTaskUseCase: DeleteTaskUseCase,
-    private val sessionPreference: SessionPreference
+    private val sessionPreference: SessionPreference,
+    private val authRepository: AuthRepository
 
 ) : ViewModelProvider.Factory {
 
@@ -79,6 +81,15 @@ class ViewModelFactory(
             }
 
             modelClass.isAssignableFrom(
+                UpdateTaskViewModel::class.java
+            ) -> {
+
+                UpdateTaskViewModel(
+                    updateTaskUseCase
+                ) as T
+            }
+
+            modelClass.isAssignableFrom(
                 CreateTaskViewModel::class.java
             ) -> {
 
@@ -88,6 +99,12 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(authRepository, sessionPreference) as T
+            }
+
+            else -> {
+                throw IllegalArgumentException(
+                    "Unknown ViewModel Class"
+                )
             }
         }
     }

@@ -135,6 +135,12 @@ class NoteDetailFragment : Fragment() {
                 updateViewModel.event.collect { handleEvent(it) }
             }
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                detailViewModel.event.collect { handleEvent(it) }
+            }
+        }
     }
 
     private fun handleEvent(event: Event) {
