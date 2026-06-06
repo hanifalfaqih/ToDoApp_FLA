@@ -87,29 +87,32 @@
                         android:layout_height="wrap_content"
                         android:text="@string/priority_all"
                         android:checked="true"
-                        app:chipBackgroundColor="@color/black"
-                        android:textColor="@color/white" />
+                        app:chipBackgroundColor="@color/chip_all_bg"
+                        android:textColor="@color/chip_all_text" />
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:id="@+id/chip_high"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/priority_high" />
+                        android:text="@string/priority_high"
+                        app:chipBackgroundColor="@color/chip_high_bg" />
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:id="@+id/chip_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/priority_medium" />
+                        android:text="@string/priority_medium"
+                        app:chipBackgroundColor="@color/chip_medium_bg" />
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:id="@+id/chip_low"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/priority_low" />
+                        android:text="@string/priority_low"
+                        app:chipBackgroundColor="@color/chip_low_bg" />
 
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>

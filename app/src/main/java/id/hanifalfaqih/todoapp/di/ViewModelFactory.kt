@@ -50,7 +50,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
                 UpdateTaskViewModel(UpdateTaskUseCase(taskRepository)) as T
             }
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
-                ProfileViewModel(sessionPreference) as T
+                ProfileViewModel(authRepository, sessionPreference) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

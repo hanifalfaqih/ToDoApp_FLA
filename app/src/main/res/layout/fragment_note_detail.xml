@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/priority_high"
-                app:chipBackgroundColor="@color/note_pink" />
+                app:chipBackgroundColor="@color/chip_high_bg" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_medium"
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/priority_medium"
-                app:chipBackgroundColor="@color/note_yellow" />
+                app:chipBackgroundColor="@color/chip_medium_bg" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_low"
@@ -109,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/priority_low"
-                app:chipBackgroundColor="@color/note_blue" />
+                app:chipBackgroundColor="@color/chip_low_bg" />
 
         </com.google.android.material.chip.ChipGroup>
 

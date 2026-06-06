@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -14,10 +15,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import id.hanifalfaqih.todoapp.R
 import id.hanifalfaqih.todoapp.di.ViewModelFactory
-import id.hanifalfaqih.todoapp.presentation.common.Event
 import id.hanifalfaqih.todoapp.presentation.common.UiState
 import id.hanifalfaqih.todoapp.presentation.home.HomeViewModel
 import id.hanifalfaqih.todoapp.ui.adapter.NotesAdapter
@@ -38,13 +40,17 @@ class NotesDashboardFragment : Fragment() {
 
         setupRecyclerView(view)
         setupSearch(view)
+        setupChips(view)
         setupFab(view)
         setupTopProfile(view)
         observeViewModel()
 
-        viewModel.loadTasks()
-
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadTasks()
     }
 
     private fun setupRecyclerView(view: View) {
@@ -60,12 +66,18 @@ class NotesDashboardFragment : Fragment() {
     }
 
     private fun setupSearch(view: View) {
-        val etSearch = view.findViewById<android.widget.EditText>(R.id.search_notes)
+        val etSearch = view.findViewById<EditText>(R.id.search_notes)
         etSearch.addTextChangedListener { text ->
-            if (text.isNullOrBlank()) {
-                viewModel.loadTasks()
-            } else {
-                viewModel.searchTask(text.toString())
+            viewModel.searchTask(text.toString())
+        }
+    }
+
+    private fun setupChips(view: View) {
+        val chipGroup = view.findViewById<ChipGroup>(R.id.chip_group_priorities)
+        chipGroup.setOnCheckedStateChangeListener { group, checkedIds ->
+            if (checkedIds.isNotEmpty()) {
+                val chip = group.findViewById<Chip>(checkedIds.first())
+                viewModel.filterByPriority(chip.text.toString())
             }
         }
     }
@@ -94,16 +106,6 @@ class NotesDashboardFragment : Fragment() {
                             Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
                         }
                         else -> Unit
-                    }
-                }
-            }
-        }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.event.collect { event ->
-                    if (event is Event.ShowMessage) {
-                        Toast.makeText(context, event.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }

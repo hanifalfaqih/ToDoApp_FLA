@@ -111,15 +111,57 @@
             android:text="zeo@example.com" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_old_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Old Password"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/til_email">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_old_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_new_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="New Password"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/til_old_password">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_new_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_save_profile"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Save Changes"
         android:textAllCaps="false"
         app:cornerRadius="16dp"
         app:backgroundTint="@color/primary_blue"
-        app:layout_constraintTop_toBottomOf="@id/til_email" />
+        app:layout_constraintTop_toBottomOf="@id/til_new_password" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_delete_account"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Delete Account"
+        android:textColor="#FF4D4D"
+        app:layout_constraintTop_toBottomOf="@id/btn_save_profile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
