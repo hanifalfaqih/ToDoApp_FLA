@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import id.hanifalfaqih.todoapp.R
+import id.hanifalfaqih.todoapp.di.AppModule
 import id.hanifalfaqih.todoapp.di.ViewModelFactory
 import id.hanifalfaqih.todoapp.presentation.profile.ProfileViewModel
 import java.io.File
@@ -22,7 +23,7 @@ import java.io.FileOutputStream
 class EditProfileFragment : Fragment() {
 
     private val viewModel: ProfileViewModel by viewModels {
-        ViewModelFactory(requireContext())
+        AppModule.provideViewModelFactory(requireContext())
     }
 
     private lateinit var ivProfile: ImageView

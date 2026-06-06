@@ -81,7 +81,8 @@ object AppModule {
             createTaskUseCase = createTaskUseCase,
             updateTaskUseCase = updateTaskUseCase,
             deleteTaskUseCase = deleteTaskUseCase,
-            sessionPreference = sessionPreference
+            sessionPreference = sessionPreference,
+            authRepository = authRepository
         )
     }
 

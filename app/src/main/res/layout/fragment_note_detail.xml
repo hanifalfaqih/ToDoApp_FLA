@@ -23,8 +23,8 @@
                 android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Back"
-                android:src="@android:drawable/ic_menu_revert"
-                app:tint="@color/note_orange" />
+                android:src="@drawable/ic_back"
+                app:tint="@color/black" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
