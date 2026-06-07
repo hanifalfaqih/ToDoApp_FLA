@@ -5,6 +5,5 @@ data class TaskItemUiModel (
     val title: String,
     val description: String,
     val priority: String,
-    val state: String,
     val isUrgent: Boolean
 )

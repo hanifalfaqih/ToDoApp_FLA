@@ -3,8 +3,6 @@ package id.hanifalfaqih.todoapp.data.mapper
 import id.hanifalfaqih.todoapp.data.remote.dto.response.TaskDataResponse
 import id.hanifalfaqih.todoapp.domain.model.Task
 import id.hanifalfaqih.todoapp.domain.model.TaskPriority
-import id.hanifalfaqih.todoapp.domain.state.DoneState
-import id.hanifalfaqih.todoapp.domain.state.TodoState
 
 object TaskMapper {
 
@@ -19,11 +17,6 @@ object TaskMapper {
             isCompleted = response.isCompleted ?: false,
             weight = response.weight,
             urgent = response.urgent,
-            state = if (response.isCompleted == true) {
-                DoneState()
-            } else {
-                TodoState()
-            }
         )
     }
 
